@@ -9,7 +9,7 @@ Recursos API
 Ayúdenos a hacerlo mejor
 ------------------------
 
-Por favor, díganos cómo podemos mejorar la API. Para hablar con nosotros sobre la API, no dude en escribirnos a <mailto:info@neartech.com.ar>.
+Por favor, díganos cómo podemos mejorar la documentación. Para hablar con nosotros no dude en escribirnos a <mailto:info@neartech.com.ar>.
 
 Visite nuestrá página: [Neartech SRL](http://www.neartech.com.ar)
 
