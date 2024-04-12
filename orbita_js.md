@@ -1,36 +1,36 @@
-Funciones Javascript para fórmulas en sistema Orbita 
+Funciones Javascript para fÃ³rmulas en sistema Orbita 
 ------
 
 ### Objeto utiles
 
-####floatNum(valor)
+#### floatNum(valor)
 
-| Parámetros     | Explicación|
+| ParÃ¡metros     | ExplicaciÃ³n|
 | -------------- | ---------- |
 | valor |objeto string a convetir a float|
 
-Devuelve un valor float o cero si da error la conversión
+Devuelve un valor float o cero si da error la conversiÃ³n
 ejemplo
 
 ```javascript
 	var total = utiles.floatNum("100.25");
 ```
-####intNum(valor)
+#### intNum(valor)
 
-| Parámetros     | Explicación|
+| ParÃ¡metros     | ExplicaciÃ³n|
 | -------------- | ---------- |
 | valor |objeto string a convetir a integer|
 
-Devuelve un valor integer o cero si da error la conversión
+Devuelve un valor integer o cero si da error la conversiÃ³n
 ejemplo
 
 ```javascript
 	var cantidad = utiles.intNum("2512");
 ```
 
-####leerExcel(filename)
+#### leerExcel(filename)
 
-| Parámetros     | Explicación|
+| ParÃ¡metros     | ExplicaciÃ³n|
 | -------------- | ---------- |
 | filename | ruta y nombre archivo excel|
 
@@ -39,9 +39,9 @@ Devuelve un array con los datos de la planilla excel.
 ```javascript
 const file = utiles.leerExcel("c:/planillas/ejemplo.xlsx");
 ```
-####logJson(objeto)
+#### logJson(objeto)
 
-| Parámetros     | Explicación|
+| ParÃ¡metros     | ExplicaciÃ³n|
 | -------------- | ---------- |
 | objeto |objeto a mostrar en consola|
 
@@ -65,9 +65,9 @@ resultado
 
 ```
 
-####localRest(metodo, endpoint, json)
+#### localRest(metodo, endpoint, json)
 
-| Parámetros     | Explicación|
+| ParÃ¡metros     | ExplicaciÃ³n|
 | -------------- | ---------- |
 | metodo |GET POST PUT DELETE|
 | endpoint |endpoint|
@@ -77,9 +77,9 @@ Ejecuta un endpoint REST localmente y devuelve el resultado de la siguiente form
 + status code: 200 o 400
 + header: objeto con el encabezado del requerimiento con los siguientes datos: 
 	* current_count:	total de registros devueltos
-	* per_page: total de registros por página
+	* per_page: total de registros por pÃ¡gina
 	* total_count: total de registros
-	* total_pages: total de páginas
+	* total_pages: total de pÃ¡ginas
 + objeto: objeto array que devuelve el endpoint o vacio
 
 ejemplo
@@ -110,17 +110,17 @@ resultado en consola
 ]
 ```
 
-####localRestPaginado(metodo, endpoint, json)
+#### localRestPaginado(metodo, endpoint, json)
 
-| Parámetros     | Explicación|
+| ParÃ¡metros     | ExplicaciÃ³n|
 | -------------- | ---------- |
 | metodo |GET POST PUT DELETE|
 | endpoint |endpoint|
 | sjson |string json o string vacio|
 
-Ejecuta un endpoint REST localmente y crea un objeto que se puede recorrer página por página.
-El método objeto.Next() permite iterar sobre las páginas.
-Desde la propiedad objeto.json se obtiene los datos de la página activa.
+Ejecuta un endpoint REST localmente y crea un objeto que se puede recorrer pÃ¡gina por pÃ¡gina.
+El mÃ©todo objeto.Next() permite iterar sobre las pÃ¡ginas.
+Desde la propiedad objeto.json se obtiene los datos de la pÃ¡gina activa.
 
 ejemplo
 
