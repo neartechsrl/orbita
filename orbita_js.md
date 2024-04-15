@@ -7,6 +7,7 @@ Funciones Javascript para fórmulas en sistema Orbita
 - [intNum](#int_num)
 - [leerArchivo](#leer_archivo)
 - [leerExcel](#leer_excel)
+- [logJson](#log_json)
 - [localRest](#local_rest)
 - [localRestPaginado](#local_rest_paginado)
 - [Rest](#rest)
@@ -24,6 +25,7 @@ ejemplo
 ```javascript
 	var total = utiles.floatNum("100.25");
 ```
+<a id="int_num"></a>
 #### intNum(valor)
 
 | Parámetros     | Explicación|
@@ -36,6 +38,7 @@ ejemplo
 ```javascript
 	var cantidad = utiles.intNum("2512");
 ```
+<a id="leer_archivo"></a>
 #### leerArchivo(param)
 
 | Parámetros     | Explicación|
@@ -119,6 +122,7 @@ const excel = utiles.leerArchivo(excel_param);
 
 ```
 
+<a id="leer_excel"></a>
 #### leerExcel(filename)
 
 | Parámetros     | Explicación|
@@ -130,6 +134,8 @@ Devuelve un array con los datos de la planilla excel.
 ```javascript
 const file = utiles.leerExcel("c:/planillas/ejemplo.xlsx");
 ```
+
+<a id="log_json"></a>
 #### logJson(objeto)
 
 | Parámetros     | Explicación|
@@ -156,6 +162,7 @@ resultado
 
 ```
 
+<a id="local_rest"></a>
 #### localRest(metodo, endpoint, objeto)
 
 | Parámetros     | Explicación|
@@ -199,6 +206,7 @@ resultado en consola
 ]
 ```
 
+<a id="local_rest_paginado"></a>
 #### localRestPaginado(metodo, endpoint, objeto)
 
 | Parámetros     | Explicación|
@@ -231,6 +239,7 @@ resultado en consola
 }
 ```
 
+<a id="rest"></a>
 #### Rest(metodo, url, objeto, header)
 
 | Parámetros     | Explicación|
