@@ -157,12 +157,12 @@ resultado
 
 Ejecuta un endpoint REST localmente y devuelve el resultado de la siguiente forma:
 + status code: 200 o 400
-+ header: objeto con el encabezado del requerimiento con los siguientes datos: 
-	* current_count:	total de registros devueltos
++ header: objeto con el encabezado de la respuesta con los siguientes datos: 
+	* current_count: total de registros devueltos
 	* per_page: total de registros por página
 	* total_count: total de registros
 	* total_pages: total de páginas
-+ objeto: objeto array que devuelve el endpoint o vacio
++ objeto: objeto, array o null que devuelve el endpoint
 
 ejemplo
 
@@ -185,10 +185,8 @@ resultado en consola
   {
     "cod_calculo": 0,
     "cod_cliente": "000001",
-    "cod_conexion": "000001",
-    // ...
-  },
-  ...
+    "cod_conexion": "000001"
+  }
 ]
 ```
 
@@ -220,8 +218,7 @@ resultado en consola
 {
 "cod_calculo": 0,
 "cod_cliente": "000001",
-"cod_conexion": "000001",
-// ...
+"cod_conexion": "000001"
 }
 ```
 
@@ -234,15 +231,18 @@ resultado en consola
 | objeto |array, objeto o null. Si es válido se transforma a json para enviar en el requerimiento|
 | header |objeto o null. Se usa para pasar encabezado de requerimiento personalizado|
 
-Ejecuta un endpoint REST externo y devuelve un objeto json.
+Ejecuta un endpoint REST remoto y devuelve el resultado de la siguiente forma:
++ status code: 200 o 400
++ header: objeto con el encabezado de la respuesta
++ objeto: objeto, array o null que devuelve el endpoint
 
 ejemplo
 
 ```javascript
-var h = {
+var headerReq = {
 	"Accept": "application/json",
 	"Content-Type": "application/json; charset=UTF-8",
 	"Authorization": "Basic " + nt.EncodeBase64("supervisor" + ":" + "123456") 
 }
-var result = utiles.Rest("GET", "https://api.neartech.com.ar:4567/cliente?codigo_perfil=1&nombre_base=ejemplo1&codigo_cliente=000001", null, h);
+const [status_code, headerResp, cliente] = utiles.Rest("GET", "https://api.neartech.com.ar:4567/cliente?codigo_perfil=1&nombre_base=ejemplo1&codigo_cliente=000001", null, headerReq);
 ```
