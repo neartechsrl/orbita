@@ -39,7 +39,7 @@ Devuelve un array con los datos del archivo leido.
 
 // ejemplo leer archivo de texto
 var txt_param = {
-        archivo: "c:\\articulos.txt", // ruta y nombre de archivo
+        archivo: "c:/articulos.txt", // ruta y nombre de archivo
         tipo: "txt", // txt = archivo de texto
         separador: "tab", // tab , o ;
         fila_inicial: 1,
@@ -75,7 +75,7 @@ const txtfile = utiles.leerArchivo(txt_param);
 
 // ejemplo leer planilla excel
 var excel_param = {
-	archivo: "c:\\Libro1.xlsx", // ruta y nombre de planilla excel
+	archivo: "c:/Libro1.xlsx", // ruta y nombre de planilla excel
 	tipo: "xls", // xls = excel
 	hojas: [
 	    {
