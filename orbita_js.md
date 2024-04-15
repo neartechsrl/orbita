@@ -3,6 +3,15 @@ Funciones Javascript para fórmulas en sistema Orbita
 
 ### Objeto utiles
 
+- [floatNum](#float_num)
+- [intNum](#int_num)
+- [leerArchivo](#leer_archivo)
+- [leerExcel](#leer_excel)
+- [localRest](#local_rest)
+- [localRestPaginado](#local_rest_paginado)
+- [Rest](#rest)
+  
+<div id='float_num' />
 #### floatNum(valor)
 
 | Parámetros     | Explicación|
