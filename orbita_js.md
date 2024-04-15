@@ -11,7 +11,7 @@ Funciones Javascript para fórmulas en sistema Orbita
 - [localRestPaginado](#local_rest_paginado)
 - [Rest](#rest)
   
-<div id='float_num' />
+<a id="float_num"></a>
 #### floatNum(valor)
 
 | Parámetros     | Explicación|
