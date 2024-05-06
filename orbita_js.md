@@ -1,17 +1,62 @@
-Funciones Javascript para fórmulas en sistema Orbita 
+![imagen](https://github.com/neartechsrl/orbita/assets/55465514/72d38576-6c8e-4106-ba00-720f85144979)Funciones Javascript para fórmulas en sistema Orbita 
 ------
 
 ### Objeto utiles
 
+- [logJson](#log_json)
+  
 - [floatNum](#float_num)
 - [intNum](#int_num)
+
+- [isDate](#isDate)
+- [formatDate](#formatDate)
+- [firstDateOffWeek](#firstDateOffWeek)
+- [firstDateOffMonth](#firstDateOffMonth)
+- [previousWeek](#previousWeek)
+- [previousMonth](#previousMonth)
+- [currentYear](#currentYear)
+- [previousYear](#previousYear)
+- [getExcelDate](#getExcelDate)
+- [getStrExcelDate](#getStrExcelDate)
+  
 - [leerArchivo](#leer_archivo)
 - [leerExcel](#leer_excel)
-- [logJson](#log_json)
+  
 - [localRest](#local_rest)
 - [localRestPaginado](#local_rest_paginado)
 - [Rest](#rest)
   
+- [leerConexionesValores](#leerConexionesValores)
+- [leerNovedadesValores](#leerNovedadesValores)
+- [grabarNovedadesValores](#grabarNovedadesValores)
+- [leerConexion](#leerConexion)
+  
+<a id="log_json"></a>
+#### logJson(objeto)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| objeto |objeto a mostrar en consola|
+
+Muestra por consola un objeto en formato json.
+
+```javascript
+const datos = {
+	codigo: "001",
+	importe: 125.22
+} ;
+
+utiles.logJson(datos);
+```
+resultado
+
+```json
+{
+  "codigo": "001",
+  "importe": 125.22
+}
+```
+
 <a id="float_num"></a>
 #### floatNum(valor)
 
@@ -20,11 +65,11 @@ Funciones Javascript para fórmulas en sistema Orbita
 | valor |objeto string a convetir a float|
 
 Devuelve un valor float o cero si da error la conversión
-ejemplo
 
 ```javascript
 	var total = utiles.floatNum("100.25");
 ```
+
 <a id="int_num"></a>
 #### intNum(valor)
 
@@ -33,11 +78,104 @@ ejemplo
 | valor |objeto string a convetir a integer|
 
 Devuelve un valor integer o cero si da error la conversión
-ejemplo
 
 ```javascript
 	var cantidad = utiles.intNum("2512");
 ```
+<a id="isDate"></a>
+#### isDate(valor)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| valor |fecha a validar|
+
+Devuelve true/false según si el valor es una fecha válida o no.
+
+```javascript
+	var fecha_valida = utiles.isDate("01/01/2024");
+```
+
+<a id="formatDate"></a>
+#### formatDate(valor)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| valor |fecha|
+
+Devuelve un string con la fecha en formato dd/mm/yyyy
+
+```javascript
+	var strFecha = utiles.formatDate(new Date(2024,0,12));
+	console.log(strFecha);
+```
+```
+	> 12/01/2024
+```
+
+<a id="firstDateOffWeek"></a>
+#### firstDateOffWeek()
+
+Devuelve la fecha del primer día de la semana. Si la fecha actual es 03/05/2024, la función devolvería 28/04/2024
+
+<a id="firstDateOffMonth"></a>
+#### firstDateOffMonth()
+
+Devuelve la fecha del primer día del mes. Si la fecha actual es 03/05/2024, la función devolvería 01/05/2024
+
+<a id="previousWeek"></a>
+#### previousWeek()
+
+Devuelve dos fechas, una con el valor del primer día de la semana anterior y otra con el último día de la semana anterior, siempre tomando como referencia la fecha actual.
+
+<a id="previousMonth"></a>
+#### previousMonth()
+
+Devuelve dos fechas, una con el valor del primer día del mes anterior y otra con el último día del mes anterior, siempre tomando como referencia la fecha actual.
+
+<a id="currentYear"></a>
+#### currentYear()
+
+Devuelve dos fechas, una con el valor del primer día del año actual y otra con la fecha actual, siempre tomando como referencia la fecha actual.
+
+<a id="previousYear"></a>
+#### previousYear()
+
+Devuelve dos fechas, una con el valor del primer día del año anterior y otra con el último día del año anterior, siempre tomando como referencia la fecha actual.
+
+<a id="getExcelDate"></a>
+#### getExcelDate(valor)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| valor |valor numérico a transformar en fecha|
+
+Devuelve un objeto date según el valor numérico pasado como parámetro o el valor 1899-12-30 si da error la conversión.
+
+```javascript
+	var fecha = utiles.getExcelDate(45316);
+	console.log(fecha);
+```
+```
+	> 2024-01-25
+```
+
+<a id="getStrExcelDate"></a>
+#### getStrExcelDate(valor)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| valor |valor numérico a transformar en fecha|
+
+Devuelve una objeto string con formato dd/mm/yyyy según el valor numérico pasado como parámetro o el valor 30/12/1899 si da error la conversión.
+
+```javascript
+	var fecha = utiles.getExcelDate(45316);
+	console.log(fecha);
+```
+```
+	> 25/01/2024
+```
+
 <a id="leer_archivo"></a>
 #### leerArchivo(param)
 
@@ -133,33 +271,6 @@ Devuelve un array con los datos de la planilla excel.
 
 ```javascript
 const file = utiles.leerExcel("c:/planillas/ejemplo.xlsx");
-```
-
-<a id="log_json"></a>
-#### logJson(objeto)
-
-| Parámetros     | Explicación|
-| -------------- | ---------- |
-| objeto |objeto a mostrar en consola|
-
-Muestra por consola un objeto en formato json.
-
-```javascript
-const datos = {
-	codigo: "001",
-	importe: 125.22
-} ;
-
-utiles.logJson(datos);
-```
-resultado
-
-```json
-{
-  "codigo": "001",
-  "importe": 125.22
-}
-
 ```
 
 <a id="local_rest"></a>
@@ -264,3 +375,61 @@ var headerReq = {
 }
 const [status_code, headerResp, cliente] = utiles.Rest("GET", "https://api.neartech.com.ar:4567/cliente?codigo_perfil=1&nombre_base=ejemplo1&codigo_cliente=000001", null, headerReq);
 ```
+
+<a id="leerConexionesValores"></a>
+#### leerConexionesValores(cod_conexion, cod_propiedad, periodo)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| cod_conexion | código conexión |
+| cod_propiedad | código novedad |
+| periodo | periodo |
+
+Devuelve un array con los datos de valores de propiedades del periodo consultado de una conexión específica.
+
+<a id="leerNovedadesValores"></a>
+#### leerNovedadesValores(cod_novedad, cod_conexion, periodo)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| cod_novedad | código novedad |
+| cod_conexion | código conexión |
+| periodo | periodo |
+
+Devuelve un array con los datos de valores de novedades PENDIENTES del periodo consultado de una conexión específica.
+
+<a id="leerNovedadesValores"></a>
+#### grabarNovedadesValores(json)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| json | json con la novedad a grabar |
+
+Graba un valor de novedad en el periodo actual.
+
+```javascript
+// buscar datos conexion
+const conexion = utiles.leerConexion("CN01");
+if ( conexion !== null )  {
+	const json = {
+	    cod_novedad: param.novedad.cod_novedad,
+	    cod_conexion: conexion.cod_conexion,
+	    periodo: param.periodo,
+            estado: "PENDIENTE",
+	    valores: {
+		importe: 1250.25
+	    }            
+	}
+	
+	// Grabar novedad.
+	const [error, result] = utiles.grabarNovedadesValores(json);
+	if ( !result ) {          
+	  console.log("error al grabar novedad");
+	  console.log(error.error);
+	  utiles.logJson( json );
+	  console.log("----------------");
+	}
+}
+```
+	
+
