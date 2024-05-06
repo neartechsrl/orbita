@@ -3,21 +3,19 @@
 
 ### Objeto utiles
 
-- [logJson](#log_json)
-  
+- [logJson](#log_json) 
 - [floatNum](#float_num)
 - [intNum](#int_num)
-
-- [isDate](#isDate)
-- [formatDate](#formatDate)
-- [firstDateOffWeek](#firstDateOffWeek)
-- [firstDateOffMonth](#firstDateOffMonth)
-- [previousWeek](#previousWeek)
-- [previousMonth](#previousMonth)
-- [currentYear](#currentYear)
-- [previousYear](#previousYear)
-- [getExcelDate](#getExcelDate)
-- [getStrExcelDate](#getStrExcelDate)
+- [isDate](#is_date)
+- [formatDate](#format_date)
+- [firstDateOffWeek](#first_date_off_week)
+- [firstDateOffMonth](#first_date_off_month)
+- [previousWeek](#previous_week)
+- [previousMonth](#previous_month)
+- [currentYear](#current_year)
+- [previousYear](#previous_year)
+- [getExcelDate](#get_excel_date)
+- [getStrExcelDate](#get_str_excel_date)
   
 - [leerArchivo](#leer_archivo)
 - [leerExcel](#leer_excel)
@@ -26,10 +24,10 @@
 - [localRestPaginado](#local_rest_paginado)
 - [Rest](#rest)
   
-- [leerConexionesValores](#leerConexionesValores)
-- [leerNovedadesValores](#leerNovedadesValores)
-- [grabarNovedadesValores](#grabarNovedadesValores)
-- [leerConexion](#leerConexion)
+- [leerConexionesValores](#leer_conexiones_valores)
+- [leerNovedadesValores](#leer_novedades_valores)
+- [grabarNovedadesValores](#grabar_novedades_valores)
+- [leerConexion](#leer_conexion)
   
 <a id="log_json"></a>
 #### logJson(objeto)
@@ -82,7 +80,7 @@ Devuelve un valor integer o cero si da error la conversión
 ```javascript
 	var cantidad = utiles.intNum("2512");
 ```
-<a id="isDate"></a>
+<a id="is_date"></a>
 #### isDate(valor)
 
 | Parámetros     | Explicación|
@@ -95,7 +93,7 @@ Devuelve true/false según si el valor es una fecha válida o no.
 	var fecha_valida = utiles.isDate("01/01/2024");
 ```
 
-<a id="formatDate"></a>
+<a id="format_date"></a>
 #### formatDate(valor)
 
 | Parámetros     | Explicación|
@@ -112,37 +110,37 @@ Devuelve un string con la fecha en formato dd/mm/yyyy
 	> 12/01/2024
 ```
 
-<a id="firstDateOffWeek"></a>
+<a id="first_date_off_week"></a>
 #### firstDateOffWeek()
 
 Devuelve la fecha del primer día de la semana. Si la fecha actual es 03/05/2024, la función devolvería 28/04/2024
 
-<a id="firstDateOffMonth"></a>
+<a id="first_date_off_month"></a>
 #### firstDateOffMonth()
 
 Devuelve la fecha del primer día del mes. Si la fecha actual es 03/05/2024, la función devolvería 01/05/2024
 
-<a id="previousWeek"></a>
+<a id="previous_week"></a>
 #### previousWeek()
 
 Devuelve dos fechas, una con el valor del primer día de la semana anterior y otra con el último día de la semana anterior, siempre tomando como referencia la fecha actual.
 
-<a id="previousMonth"></a>
+<a id="previous_month"></a>
 #### previousMonth()
 
 Devuelve dos fechas, una con el valor del primer día del mes anterior y otra con el último día del mes anterior, siempre tomando como referencia la fecha actual.
 
-<a id="currentYear"></a>
+<a id="current_year"></a>
 #### currentYear()
 
 Devuelve dos fechas, una con el valor del primer día del año actual y otra con la fecha actual, siempre tomando como referencia la fecha actual.
 
-<a id="previousYear"></a>
+<a id="previous_year"></a>
 #### previousYear()
 
 Devuelve dos fechas, una con el valor del primer día del año anterior y otra con el último día del año anterior, siempre tomando como referencia la fecha actual.
 
-<a id="getExcelDate"></a>
+<a id="getExcel_date"></a>
 #### getExcelDate(valor)
 
 | Parámetros     | Explicación|
@@ -159,7 +157,7 @@ Devuelve un objeto date según el valor numérico pasado como parámetro o el va
 	> 2024-01-25
 ```
 
-<a id="getStrExcelDate"></a>
+<a id="get_str_excel_date"></a>
 #### getStrExcelDate(valor)
 
 | Parámetros     | Explicación|
@@ -376,7 +374,7 @@ var headerReq = {
 const [status_code, headerResp, cliente] = utiles.Rest("GET", "https://api.neartech.com.ar:4567/cliente?codigo_perfil=1&nombre_base=ejemplo1&codigo_cliente=000001", null, headerReq);
 ```
 
-<a id="leerConexionesValores"></a>
+<a id="leer_conexiones_valores"></a>
 #### leerConexionesValores(cod_conexion, cod_propiedad, periodo)
 
 | Parámetros     | Explicación|
@@ -387,7 +385,7 @@ const [status_code, headerResp, cliente] = utiles.Rest("GET", "https://api.neart
 
 Devuelve un array con los datos de valores de propiedades del periodo consultado de una conexión específica.
 
-<a id="leerNovedadesValores"></a>
+<a id="leer_novedades_valores"></a>
 #### leerNovedadesValores(cod_novedad, cod_conexion, periodo)
 
 | Parámetros     | Explicación|
@@ -398,7 +396,7 @@ Devuelve un array con los datos de valores de propiedades del periodo consultado
 
 Devuelve un array con los datos de valores de novedades PENDIENTES del periodo consultado de una conexión específica.
 
-<a id="leerNovedadesValores"></a>
+<a id="grabar_novedades_valores"></a>
 #### grabarNovedadesValores(json)
 
 | Parámetros     | Explicación|
@@ -431,5 +429,14 @@ if ( conexion !== null )  {
 	}
 }
 ```
+<a id="leer_conexion"></a>
+#### leerConexion(cod_conexion)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| cod_conexion | código conexión a consultar |
+
+Devuelve un objeto json con los datos de la conexión a consultar.
+
 	
 
