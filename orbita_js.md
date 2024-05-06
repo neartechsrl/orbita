@@ -1,4 +1,4 @@
-![imagen](https://github.com/neartechsrl/orbita/assets/55465514/72d38576-6c8e-4106-ba00-720f85144979)Funciones Javascript para fórmulas en sistema Orbita 
+Funciones Javascript para fórmulas en sistema Orbita 
 ------
 
 ### Objeto utiles
