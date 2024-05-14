@@ -399,6 +399,11 @@ const [status_code, headerResp, cliente] = utiles.Rest("GET", "https://api.neart
 
 Devuelve un objeto json con los datos de la conexión a consultar.
 
+```javascript
+    const conexion = utiles.leerConexion(reg.cod_conexion);
+    utiles.logJson(conexion);
+```
+
 <a id="leer_conexiones_valores"></a>
 #### leerConexionesValores(cod_conexion, cod_propiedad, periodo)
 
@@ -432,6 +437,11 @@ Devuelve un array con los datos de valores de novedades PENDIENTES del periodo c
 
 Devuelve un objeto con los datos de valores de la propiedad del periodo consultado de una conexión específica.
 
+```javascript
+    const propiedad = utiles.leerPropiedadConexion(param.cod_conexion, "JUBILADO", param.periodo);
+    utiles.logJson(propiedad);
+```
+
 <a id="leer_valor_novedad"></a>
 #### leerValorNovedad(cod_novedad, cod_conexion, periodo)
 
@@ -442,6 +452,11 @@ Devuelve un objeto con los datos de valores de la propiedad del periodo consulta
 | periodo | periodo |
 
 Devuelve un objeto con los datos de valores de novedad PENDIENTE del periodo consultado de una conexión específica.
+
+```javascript
+    const novedad = utiles.leerValorNovedad("TARIFA", "", param.periodo);
+    utiles.logJson(novedad);
+```
 
 <a id="grabar_novedades_valores"></a>
 #### grabarNovedadesValores(json)
