@@ -3,7 +3,8 @@ Funciones Javascript para fórmulas en sistema Orbita
 
 ### Objeto utiles
 
-- [logJson](#log_json) 
+- [logJson](#log_json)
+- [errorJson](#error_json)  
 - [floatNum](#float_num)
 - [intNum](#int_num)
 - [isDate](#is_date)
@@ -24,10 +25,15 @@ Funciones Javascript para fórmulas en sistema Orbita
 - [localRestPaginado](#local_rest_paginado)
 - [Rest](#rest)
   
-- [leerConexionesValores](#leer_conexiones_valores)
-- [leerNovedadesValores](#leer_novedades_valores)
-- [grabarNovedadesValores](#grabar_novedades_valores)
 - [leerConexion](#leer_conexion)
+- [leerConexionesValores](#leer_conexiones_valores)
+- [leerPropiedadConexion](#leer_propiedad_conexion)
+
+- [leerNovedadesValores](#leer_novedades_valores)
+- [leerValorNovedad](#leer_valor_novedad)
+  
+- [grabarConexionValores](#grabar_conexion_valores)
+- [grabarNovedadesValores](#grabar_novedades_valores)
   
 <a id="log_json"></a>
 #### logJson(objeto)
@@ -54,6 +60,15 @@ resultado
   "importe": 125.22
 }
 ```
+
+<a id="error_json"></a>
+#### errorJson(objeto)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| objeto |objeto a mostrar en consola de errores|
+
+Muestra por consola de errores un objeto en formato json.
 
 <a id="float_num"></a>
 #### floatNum(valor)
@@ -259,16 +274,17 @@ const excel = utiles.leerArchivo(excel_param);
 ```
 
 <a id="leer_excel"></a>
-#### leerExcel(filename)
+#### leerExcel(filename, nombre_hoja)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
 | filename | ruta y nombre archivo excel|
+| nombre_hoja | nombre de hoja a leer. Parámetro opcional. |
 
-Devuelve un array con los datos de la planilla excel.
+Devuelve un array con los datos de la planilla excel. Si se indica la hoja devuelve los datos de dicha hoja, sino de todas las hojas de la planilla.
 
 ```javascript
-const file = utiles.leerExcel("c:/planillas/ejemplo.xlsx");
+const file = utiles.leerExcel("c:/planillas/ejemplo.xlsx", "Hoja1");
 ```
 
 <a id="local_rest"></a>
@@ -374,6 +390,15 @@ var headerReq = {
 const [status_code, headerResp, cliente] = utiles.Rest("GET", "https://api.neartech.com.ar:4567/cliente?codigo_perfil=1&nombre_base=ejemplo1&codigo_cliente=000001", null, headerReq);
 ```
 
+<a id="leer_conexion"></a>
+#### leerConexion(cod_conexion)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| cod_conexion | código conexión a consultar |
+
+Devuelve un objeto json con los datos de la conexión a consultar.
+
 <a id="leer_conexiones_valores"></a>
 #### leerConexionesValores(cod_conexion, cod_propiedad, periodo)
 
@@ -396,6 +421,28 @@ Devuelve un array con los datos de valores de propiedades del periodo consultado
 
 Devuelve un array con los datos de valores de novedades PENDIENTES del periodo consultado de una conexión específica.
 
+<a id="leer_propiedad_conexion"></a>
+#### leerPropiedadConexion(cod_conexion, cod_propiedad, periodo)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| cod_conexion | código conexión |
+| cod_propiedad | código novedad |
+| periodo | periodo |
+
+Devuelve un objeto con los datos de valores de la propiedad del periodo consultado de una conexión específica.
+
+<a id="leer_valor_novedad"></a>
+#### leerValorNovedad(cod_novedad, cod_conexion, periodo)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| cod_novedad | código novedad |
+| cod_conexion | código conexión |
+| periodo | periodo |
+
+Devuelve un objeto con los datos de valores de novedad PENDIENTE del periodo consultado de una conexión específica.
+
 <a id="grabar_novedades_valores"></a>
 #### grabarNovedadesValores(json)
 
@@ -406,37 +453,48 @@ Devuelve un array con los datos de valores de novedades PENDIENTES del periodo c
 Graba un valor de novedad en el periodo actual.
 
 ```javascript
-// buscar datos conexion
-const conexion = utiles.leerConexion("CN01");
-if ( conexion !== null )  {
-	const json = {
-	    cod_novedad: param.novedad.cod_novedad,
-	    cod_conexion: conexion.cod_conexion,
-	    periodo: param.periodo,
-            estado: "PENDIENTE",
-	    valores: {
-		importe: 1250.25
-	    }            
-	}
-	
-	// Grabar novedad.
-	const [error, result] = utiles.grabarNovedadesValores(json);
-	if ( !result ) {          
-	  console.log("error al grabar novedad");
-	  console.log(error.error);
-	  utiles.logJson( json );
-	  console.log("----------------");
-	}
+const json = {
+    cod_novedad: param.novedad.cod_novedad,
+    cod_conexion: conexion.cod_conexion,
+    periodo: param.periodo,
+    estado: "PENDIENTE",
+    valores: {
+	importe: 1250.25
+    }            
+}
+
+// Grabar novedad.
+const [error, result] = utiles.grabarNovedadesValores(json);
+if ( !result ) {          
+  console.error("error al grabar novedad");
+  console.error(error.error);
+  utiles.errorJson( json );
 }
 ```
-<a id="leer_conexion"></a>
-#### leerConexion(cod_conexion)
+<a id="grabar_conexion_valores"></a>
+#### grabarConexionValores(json)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
-| cod_conexion | código conexión a consultar |
+| json | json con los datos de la propiedad a grabar |
 
-Devuelve un objeto json con los datos de la conexión a consultar.
+Graba un valor de propiedad de una conexión en el periodo actual.
 
-	
+```javascript
+const json = {
+ cod_propiedad: "C000010003",
+ cod_conexion: conexion.cod_conexion,
+ valores: {
+   valor: reg.valor
+ },
+ periodo: utiles.getStrExcelDate(reg.periodo)
+};
 
+// Grabar propiedad.
+const [error, result] = utiles.grabarConexionValores(json);
+if ( !result ) {          
+ console.error("error al grabar propiedad");
+ console.error(error.error);
+ utiles.errorJson( json );
+}
+```	
