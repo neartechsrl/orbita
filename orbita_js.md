@@ -7,6 +7,8 @@ Funciones Javascript para fórmulas en sistema Orbita
 - [errorJson](#error_json)  
 - [floatNum](#float_num)
 - [intNum](#int_num)
+- [redondeoExacto](#redondeo_exacto)
+- [redondeo](#redondeo)
 - [isDate](#is_date)
 - [formatDate](#format_date)
 - [firstDateOffWeek](#first_date_off_week)
@@ -95,6 +97,41 @@ Devuelve un valor integer o cero si da error la conversión
 ```javascript
 	var cantidad = utiles.intNum("2512");
 ```
+
+<a id="redondeo_exacto"></a>
+#### redondeoExacto(valor, decimales)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| valor |valor a redondear|
+| decimales |cantidad de decimales|
+
+Devuelve un valor con redondeo **exacto** según la cantidad de decimales indicada.
+
+```javascript
+	console.log(utiles.redondeoExacto(1.339));
+```
+```
+	> 1.33
+```
+
+<a id="redondeo"></a>
+#### redondeo(valor, decimales)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| valor |valor a redondear|
+| decimales |cantidad de decimales|
+
+Devuelve un valor con redondeo según la cantidad de decimales indicada.
+
+```javascript
+	console.log(utiles.redondeoExacto(1.339));
+```
+```
+	> 1.34
+```
+
 <a id="is_date"></a>
 #### isDate(valor)
 
