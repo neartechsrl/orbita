@@ -421,7 +421,7 @@ Devuelve un array con los datos de valores de propiedades del periodo consultado
 | Parámetros     | Explicación|
 | -------------- | ---------- |
 | cod_novedad | código novedad |
-| cod_conexion | código conexión |
+| cod_conexion | código conexión. Parámetro opcional. |
 | periodo | periodo |
 
 Devuelve un array con los datos de valores de novedades PENDIENTES del periodo consultado de una conexión específica.
@@ -448,14 +448,19 @@ Devuelve un objeto con los datos de valores de la propiedad del periodo consulta
 | Parámetros     | Explicación|
 | -------------- | ---------- |
 | cod_novedad | código novedad |
-| cod_conexion | código conexión |
+| cod_conexion | código conexión. Parámetro opcional. |
 | periodo | periodo |
 
 Devuelve un objeto con los datos de valores de novedad PENDIENTE del periodo consultado de una conexión específica.
 
 ```javascript
-    const novedad = utiles.leerValorNovedad("TARIFA", "", param.periodo);
+    // Leer novedad cuadro tarifario.
+    const novedad = utiles.leerValorNovedad("CUADRO_TARIFARIO", "", param.periodo);
     utiles.logJson(novedad);
+
+    // Leer novedad medicion usuario.
+    const medicion = utiles.leerValorNovedad("MEDICION", param.cod_conexion, param.periodo).valores;  
+    utiles.logJson(medicion);
 ```
 
 <a id="grabar_novedades_valores"></a>
