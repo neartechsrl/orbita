@@ -109,7 +109,7 @@ Devuelve un valor integer o cero si da error la conversión
 Devuelve un valor con redondeo **exacto** según la cantidad de decimales indicada.
 
 ```javascript
-	console.log(utiles.redondeoExacto(1.339));
+	console.log(utiles.redondeoExacto(1.339, 2));
 ```
 ```
 	> 1.33
@@ -126,7 +126,7 @@ Devuelve un valor con redondeo **exacto** según la cantidad de decimales indica
 Devuelve un valor con redondeo según la cantidad de decimales indicada.
 
 ```javascript
-	console.log(utiles.redondeoExacto(1.339));
+	console.log(utiles.redondeo(1.339, 2));
 ```
 ```
 	> 1.34
