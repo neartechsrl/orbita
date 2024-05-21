@@ -28,14 +28,14 @@ Funciones Javascript para fórmulas en sistema Orbita
 - [Rest](#rest)
   
 - [leerConexion](#leer_conexion)
-- [leerConexionesValores](#leer_conexiones_valores)
+- [leerPropiedadesConexion](#leer_propiedades_conexion)
 - [leerPropiedadConexion](#leer_propiedad_conexion)
 
-- [leerNovedadesValores](#leer_novedades_valores)
-- [leerValorNovedad](#leer_valor_novedad)
+- [leerValoresTarea](#leer_valores_tarea)
+- [leerValorTarea](#leer_valor_tarea)
   
-- [grabarConexionValores](#grabar_conexion_valores)
-- [grabarNovedadesValores](#grabar_novedades_valores)
+- [grabarPropiedadesConexion](#grabar_propiedades_conexion)
+- [grabarValoresTarea](#grabar_valores_tarea)
   
 <a id="log_json"></a>
 #### logJson(objeto)
@@ -441,8 +441,8 @@ Devuelve un objeto json con los datos de la conexión a consultar.
     utiles.logJson(conexion);
 ```
 
-<a id="leer_conexiones_valores"></a>
-#### leerConexionesValores(cod_conexion, cod_propiedad, periodo)
+<a id="leer_propiedades_conexion"></a>
+#### leerPropiedadesConexion(cod_conexion, cod_propiedad, periodo)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
@@ -451,17 +451,6 @@ Devuelve un objeto json con los datos de la conexión a consultar.
 | periodo | periodo |
 
 Devuelve un array con los datos de valores de propiedades del periodo consultado de una conexión específica.
-
-<a id="leer_novedades_valores"></a>
-#### leerNovedadesValores(cod_novedad, cod_conexion, periodo)
-
-| Parámetros     | Explicación|
-| -------------- | ---------- |
-| cod_novedad | código novedad |
-| cod_conexion | código conexión. Parámetro opcional. |
-| periodo | periodo |
-
-Devuelve un array con los datos de valores de novedades PENDIENTES del periodo consultado de una conexión específica.
 
 <a id="leer_propiedad_conexion"></a>
 #### leerPropiedadConexion(cod_conexion, cod_propiedad, periodo)
@@ -478,40 +467,50 @@ Devuelve un objeto con los datos de valores de la propiedad del periodo consulta
     const propiedad = utiles.leerPropiedadConexion(param.cod_conexion, "JUBILADO", param.periodo);
     utiles.logJson(propiedad);
 ```
-
-<a id="leer_valor_novedad"></a>
-#### leerValorNovedad(cod_novedad, cod_conexion, periodo)
+<a id="leer_valores_tarea"></a>
+#### leerValoresTarea(cod_tarea, cod_conexion, periodo)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
-| cod_novedad | código novedad |
+| cod_tarea | código tarea |
 | cod_conexion | código conexión. Parámetro opcional. |
 | periodo | periodo |
 
-Devuelve un objeto con los datos de valores de novedad PENDIENTE del periodo consultado de una conexión específica.
+Devuelve un array con los datos de valores de tareas PENDIENTES del periodo consultado de una conexión específica.
 
-```javascript
-    // Leer novedad cuadro tarifario.
-    const novedad = utiles.leerValorNovedad("CUADRO_TARIFARIO", "", param.periodo);
-    utiles.logJson(novedad);
-
-    // Leer novedad medicion usuario.
-    const medicion = utiles.leerValorNovedad("MEDICION", param.cod_conexion, param.periodo).valores;  
-    utiles.logJson(medicion);
-```
-
-<a id="grabar_novedades_valores"></a>
-#### grabarNovedadesValores(json)
+<a id="leer_valor_tarea"></a>
+#### leerValorTarea(cod_tarea, cod_conexion, periodo)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
-| json | json con la novedad a grabar |
+| cod_tarea | código tarea |
+| cod_conexion | código conexión. Parámetro opcional. |
+| periodo | periodo |
 
-Graba un valor de novedad en el periodo actual.
+Devuelve un objeto con los datos de valores de tarea PENDIENTE del periodo consultado de una conexión específica.
+
+```javascript
+    // Leer novedad cuadro tarifario.
+    const novedad = utiles.leerValorTarea("CUADRO_TARIFARIO", "", param.periodo);
+    utiles.logJson(novedad);
+
+    // Leer novedad medicion usuario.
+    const medicion = utiles.leerValorTarea("MEDICION", param.cod_conexion, param.periodo).valores;  
+    utiles.logJson(medicion);
+```
+
+<a id="grabar_valores_tarea"></a>
+#### grabarValoresTarea(json)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| json | json con la tarea/novedad a grabar |
+
+Graba un valor de una tarea en el periodo actual.
 
 ```javascript
 const json = {
-    cod_novedad: param.novedad.cod_novedad,
+    cod_tarea: param.cod_tarea,
     cod_conexion: conexion.cod_conexion,
     periodo: param.periodo,
     estado: "PENDIENTE",
@@ -520,16 +519,16 @@ const json = {
     }            
 }
 
-// Grabar novedad.
-const [error, result] = utiles.grabarNovedadesValores(json);
+// Grabar tarea.
+const [error, result] = utiles.grabarValoresTarea(json);
 if ( !result ) {          
-  console.error("error al grabar novedad");
+  console.error("error al grabar tarea");
   console.error(error.error);
   utiles.errorJson( json );
 }
 ```
-<a id="grabar_conexion_valores"></a>
-#### grabarConexionValores(json)
+<a id="grabar_propiedades_conexion"></a>
+#### grabarPropiedadesConexion(json)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
@@ -548,7 +547,7 @@ const json = {
 };
 
 // Grabar propiedad.
-const [error, result] = utiles.grabarConexionValores(json);
+const [error, result] = utiles.grabarPropiedadesConexion(json);
 if ( !result ) {          
  console.error("error al grabar propiedad");
  console.error(error.error);
