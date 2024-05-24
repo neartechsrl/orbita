@@ -25,7 +25,8 @@ Funciones Javascript para fórmulas en sistema Orbita
   
 - [localRest](#local_rest)
 - [localRestPaginado](#local_rest_paginado)
-- [Rest](#rest)
+- [rest](#rest)
+- [ejecutarVistaSQL](#ejecutar_vistasql)
   
 - [leerConexion](#leer_conexion)
 - [leerPropiedadesConexion](#leer_propiedades_conexion)
@@ -219,7 +220,7 @@ Devuelve un objeto date según el valor numérico pasado como parámetro o el va
 Devuelve una objeto string con formato dd/mm/yyyy según el valor numérico pasado como parámetro o el valor 30/12/1899 si da error la conversión.
 
 ```javascript
-	var fecha = utiles.getExcelDate(45316);
+	var fecha = utiles.getStrExcelDate(45316);
 	console.log(fecha);
 ```
 ```
@@ -402,7 +403,7 @@ resultado en consola
 ```
 
 <a id="rest"></a>
-#### Rest(metodo, url, objeto, header)
+#### rest(metodo, url, objeto, header)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
@@ -424,7 +425,22 @@ var headerReq = {
 	"Content-Type": "application/json; charset=UTF-8",
 	"Authorization": "Basic " + nt.EncodeBase64("supervisor" + ":" + "123456") 
 }
-const [status_code, headerResp, cliente] = utiles.Rest("GET", "https://api.neartech.com.ar:4567/cliente?codigo_perfil=1&nombre_base=ejemplo1&codigo_cliente=000001", null, headerReq);
+const [status_code, headerResp, cliente] = utiles.rest("GET", "https://api.neartech.com.ar:4567/cliente?codigo_perfil=1&nombre_base=ejemplo1&codigo_cliente=000001", null, headerReq);
+```
+
+<a id="ejecutar_vistasql"></a>
+#### ejecutarVistaSQL(nombre_vista)
+
+| Parámetros     | Explicación|
+| -------------- | ---------- |
+| nombre_vista |Nombre vista sql|
+
+Ejecuta una vista sql y devuelve el resultado en formato json o null 
+
+ejemplo
+
+```javascript
+const prueba = utiles.ejecutarVistaSQL("v_prueba");
 ```
 
 <a id="leer_conexion"></a>
