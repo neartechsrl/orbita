@@ -4,8 +4,9 @@ Sistema Orbita
 Recursos API
 ------------
 
-* [Ayuda Javascript](https://github.com/neartechsrl/orbita/blob/main/orbita_js.md)
-
+* [Objeto utiles javascript](https://github.com/neartechsrl/orbita/blob/main/funciones_javascript.md)
+* [Objeto orbita Javascript](https://github.com/neartechsrl/orbita/blob/main/orbita_javascript.md)
+  
 Ayúdenos a hacerlo mejor
 ------------------------
 
