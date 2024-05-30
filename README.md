@@ -1,11 +1,11 @@
 Sistema Orbita
 ==============
 
-Recursos API
-------------
+Objetos en Javascript
+---------------------
 
-* [Objeto utiles javascript](https://github.com/neartechsrl/orbita/blob/main/funciones_javascript.md)
-* [Objeto orbita Javascript](https://github.com/neartechsrl/orbita/blob/main/orbita_javascript.md)
+* [Objeto utiles](https://github.com/neartechsrl/orbita/blob/main/funciones_javascript.md)
+* [Objeto orbita](https://github.com/neartechsrl/orbita/blob/main/orbita_javascript.md)
   
 Ayúdenos a hacerlo mejor
 ------------------------
