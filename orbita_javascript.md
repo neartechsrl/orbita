@@ -130,7 +130,7 @@ Devuelve un objeto con los datos de valores de tarea. Sino se indica periodo, se
 
 ```javascript
     // Leer cuadro tarifario.
-    const cuadro = orbita.leerValorTarea("CUADRO_TARIFARIO");
+    const cuadro = orbita.leerTareaValor("CUADRO_TARIFARIO");
     utiles.logJson(cuadro);
 ```
 
