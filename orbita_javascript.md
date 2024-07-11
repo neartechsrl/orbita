@@ -5,14 +5,12 @@ Objeto orbita para usar en fórmulas en javascript en sistema Orbita
 
 - [param](#param)
 - [leerConexion](#leer_conexion)
-- [leerPropiedadesConexion](#leer_propiedades_conexion)
 - [leerPropiedadConexion](#leer_propiedad_conexion)
-- [grabarPropiedadesConexion](#grabar_propiedades_conexion)
-- [leerNovedadConexion](#leer_novedad_conexion)
-- [grabarNovedadesConexion](#grabar_novedades_conexion)
-- [leerTareaValores](#leer_tarea_valores)
+- [grabarPropiedadConexion](#grabar_propiedad_conexion)
+- [leerNovedadValor](#leer_novedad_valor)
+- [grabarNovedadValor](#grabar_novedad_valor)
 - [leerTareaValor](#leer_tarea_valor)   
-- [grabarTareaValores](#grabar_tarea_valores)
+- [grabarTareaValor](#grabar_tarea_valores)
 
 <a id="param"></a>
 #### param
@@ -82,17 +80,6 @@ Devuelve un objeto json con los datos de la conexión a consultar.
     utiles.logJson(conexion);
 ```
 
-<a id="leer_propiedades_conexion"></a>
-#### leerPropiedadesConexion(cod_conexion, cod_propiedad, periodo)
-
-| Parámetros     | Explicación|
-| -------------- | ---------- |
-| cod_conexion | código conexión a consultar |
-| cod_propiedad | código novedad |
-| periodo | periodo. Opcional. |
-
-Devuelve un array con los datos de valores de propiedades de la conexión. Sino se indica periodo, se toma el periodo activo.
-
 <a id="leer_propiedad_conexion"></a>
 #### leerPropiedadConexion(cod_conexion, cod_propiedad, periodo)
 
@@ -108,15 +95,6 @@ Devuelve un objeto con los datos de valores de la propiedad de la conexión. Sin
     const propiedad = orbita.leerPropiedadConexion(orbita.param.cod_conexion, "JUBILADO");
     utiles.logJson(propiedad);
 ```
-<a id="leer_tarea_valores"></a>
-#### leerTareaValores(cod_tarea, periodo)
-
-| Parámetros     | Explicación|
-| -------------- | ---------- |
-| cod_tarea | código tarea |
-| periodo | periodo. Opcional. |
-
-Devuelve un array con los datos de valores de tareas. Sino se indica periodo, se toma el periodo activo.
 
 <a id="leer_tarea_valor"></a>
 #### leerTareaValor(cod_tarea, periodo)
@@ -134,8 +112,8 @@ Devuelve un objeto con los datos de valores de tarea. Sino se indica periodo, se
     utiles.logJson(cuadro);
 ```
 
-<a id="grabar_tarea_valores"></a>
-#### grabarTareaValores(json)
+<a id="grabar_tarea_valor"></a>
+#### grabarTareaValor(json)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
@@ -153,15 +131,16 @@ const json = {
 }
 
 // Grabar tarea.
-const [error, result] = orbita.grabarTareaValores(json);
+const [error, result] = orbita.grabarTareaValor(json);
 if ( !result ) {          
   console.error("error al grabar tarea");
   console.error(error.error);
   utiles.errorJson( json );
 }
 ```
+
 <a id="grabar_propiedades_conexion"></a>
-#### grabarPropiedadesConexion(json)
+#### grabarPropiedadConexion(json)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
@@ -180,7 +159,7 @@ const json = {
 };
 
 // Grabar propiedad.
-const [error, result] = orbita.grabarPropiedadesConexion(json);
+const [error, result] = orbita.grabarPropiedadConexion(json);
 if ( !result ) {          
  console.error("error al grabar propiedad");
  console.error(error.error);
@@ -188,34 +167,34 @@ if ( !result ) {
 }
 ```
 
-<a id="leer_novedad_conexion"></a>
-#### leerNovedadConexion(cod_conexion, cod_novedad, estado, periodo)
+<a id="leer_novedad_valor"></a>
+#### leerNovedadValor(cod_novedad, cod_conexion, estado, periodo)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
-| cod_conexion | código novedad |
 | cod_novedad | código novedad |
+| cod_conexion | código conexion o string vacio |
 | estado | estado de la novedad. Opcional. |
 | periodo | periodo. Opcional. |
 
-Devuelve un objeto con los datos de valores de novedad de la conexión. 
+Devuelve un objeto con los datos de valores de la novedad.
 Sino se indica estado trae las novedades en estado PENDIENTE. 
 Sino se indica periodo, se toma el periodo activo.
 
 ```javascript
     // Leer novedad
-    const aviso = orbita.leerNovedadConexion(orbita.param.cod_conexion, "aviso");
+    const aviso = orbita.leerNovedadValor(orbita.param.cod_conexion, "aviso");
     utiles.logJson(aviso);
 ```
 
-<a id="grabar_novedades_conexion"></a>
-#### grabarNovedadesConexion(json)
+<a id="grabar_novedad_valor"></a>
+#### grabarNovedadValor(json)
 
 | Parámetros     | Explicación|
 | -------------- | ---------- |
 | json | json con los datos de la novedad a grabar |
 
-Graba un valor de novedad de una conexión en el periodo actual.
+Graba un valor de novedad en el periodo actual.
 
 ```javascript
 const json = {
@@ -232,7 +211,7 @@ const json = {
 };
 
 // Grabar novedad
-const [error, result] = orbita.grabarNovedadesConexion(json);
+const [error, result] = orbita.grabarNovedadValor(json);
 if ( !result ) {          
  console.error("error al grabar novedad");
  console.error(error.error);
